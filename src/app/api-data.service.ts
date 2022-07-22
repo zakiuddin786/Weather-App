@@ -13,6 +13,7 @@ export class ApiDataService {
     }
   }
 
+
   getDataWithoutToken(route: string){
     const access =  '*';
     const headers = new HttpHeaders({
@@ -26,12 +27,9 @@ export class ApiDataService {
   
   
     getData(route: any) {
-      // const token = localStorage.getItem('token');
-      const headers = new HttpHeaders({
-          // token
-      });
-      console.log(headers);
-      return this.http.get(this.url + '/api' + route, { headers });
+      let target_url = this.url + '/api' + route
+      console.log(target_url);
+      return this.http.get(target_url);
       // return this.http.get(this.url + '/api' + route);
     }
   
