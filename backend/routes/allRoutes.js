@@ -3,7 +3,14 @@ const app = express.Router();
 
 const weatherLib = require("../lib/weather")
 
-app.get("/getCurrentWeather",weatherLib.getWeather)
+// A higher order function created for handling errors in the functions
+const asyncHandler = fn => (req, res, next) => {
+    return Promise
+        .resolve(fn(req, res, next))
+        .catch(next);
+};
+
+app.get("/getCurrentWeather",asyncHandler(weatherLib.getWeatherForecast))
 
 
 module.exports = app;
