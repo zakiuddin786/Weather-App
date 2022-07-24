@@ -10,10 +10,12 @@ import { ApiDataService } from '../api-data.service';
 export class WeatherComponentComponent implements OnInit {
   weather_data: any;
   current_data: any;
+  isLoading: any;
   searchForm: FormGroup;
   constructor(private dataService: ApiDataService) { 
     this.weather_data = [];
     this.current_data = {};
+    this.isLoading = false;
     this.searchForm = new FormGroup({
       location: new FormControl('')
     })
@@ -26,9 +28,13 @@ export class WeatherComponentComponent implements OnInit {
       alert("Please enter the location!!");
       return;
     }
+    this.isLoading= true;
+    this.weather_data = [];
       this.dataService.getData(`/getCurrentWeather/${location}`).subscribe(data =>{
         console.log(data);
         this.weather_data = data;
+        this.isLoading= false;
+
         this.current_data = this.weather_data.weather_details[0];
         this.weather_data.weather_details.shift();
       },(err) => {

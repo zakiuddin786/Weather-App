@@ -8,103 +8,116 @@
              </div>
         </form>
     </div>
+    <!-- -->
+    <div class="loader" *ngIf = "isLoading" >        
+        <div class="lds-roller">
+            <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+        </div>
+    </div>
+    
 </div>
 
+
 <div class="container" *ngIf="(weather_data).length!= 0">
-    <div class="current-info current-card">
-        <div class="date-container">
-            <div class="time">
-                {{current_data.time}}<span id="am-pm">{{current_data.state}}</span>
+    
+    <div class="">
+        <div class="current-info current-card">
+            <div class="date-container">
+                <div class="time">
+                    {{current_data.time}}<span id="am-pm">{{current_data.state}}</span>
+                </div>
+                <div class="date" id="date">
+                    {{current_data.day}}, {{current_data.date}} {{current_data.month}} {{current_data.year}}
+                </div>
+                <img src="{{current_data.weather_icon_url}}" alt="{{current_data.weather_description}}" class="w-icon">
+    
+                <div class="others weather-forecast-item" id="current-weather-items">
+                    <div class="weather-item">
+                        <div class="bold-letter">Humidity</div>
+                        <div>{{current_data.humidity}} %</div>
+                    </div>
+                    <div class="weather-item">
+                        <div class="bold-letter" >Pressure</div>
+                        <div>{{current_data.pressure}}</div>
+                    </div>
+                    <div class="weather-item">
+                        <div class="bold-letter" >Wind Speed</div>
+                        <div>{{current_data.wind_speed}} km/h</div>
+                    </div>
+                    <div class="weather-item">
+                        <div class="bold-letter" >City Population</div>
+                        <div>{{weather_data.city_population}}</div>
+                    </div>
+                    <div class="weather-item">
+                        <div class="bold-letter" >Sunrise</div>
+                        <div>{{weather_data.sunrise}}</div>
+                    </div>
+                    <div class="weather-item">
+                        <div class="bold-letter" >Sunset</div>
+                        <div>{{weather_data.sunset}}</div>
+                    </div>
+                    <div class="weather-item">
+                        <div class="bold-letter" >Min Temp</div>
+                        <div>{{current_data.min_temperature}} C</div>
+                    </div>                <div class="weather-item">
+                        <div class="bold-letter" >Max Temp</div>
+                        <div>{{current_data.min_temperature}} C</div>
+                    </div>                <div class="weather-item">
+                        <div class="bold-letter" >Details</div>
+                        <div>{{current_data.weather_description}}</div>
+                    </div>
+                    
+                </div>
             </div>
-            <div class="date" id="date">
-                {{current_data.day}}, {{current_data.date}} {{current_data.month}} {{current_data.year}}
+            <div class="place-container">
+                <div class="time-zone" id="time-zone"> 
+                <i class='fas fa-map-marker-alt' style='font-size:24px'></i>
+                    {{weather_data.city_name}} , {{weather_data.country}}
+                </div>
             </div>
-            <img src="{{current_data.weather_icon_url}}" alt="{{current_data.weather_description}}" class="w-icon">
-
-            <div class="others" id="current-weather-items">
-                <div class="weather-item">
-                    <div class="bold-letter">Humidity</div>
-                    <div>{{current_data.humidity}} %</div>
-                </div>
-                <div class="weather-item">
-                    <div class="bold-letter" >Pressure</div>
-                    <div>{{current_data.pressure}}</div>
-                </div>
-                <div class="weather-item">
-                    <div class="bold-letter" >Wind Speed</div>
-                    <div>{{current_data.wind_speed}} km/h</div>
-                </div>
-                <div class="weather-item">
-                    <div class="bold-letter" >City Population</div>
-                    <div>{{weather_data.city_population}}</div>
-                </div>
-                <div class="weather-item">
-                    <div class="bold-letter" >Sunrise</div>
-                    <div>{{weather_data.sunrise}}</div>
-                </div>
-                <div class="weather-item">
-                    <div class="bold-letter" >Sunset</div>
-                    <div>{{weather_data.sunset}}</div>
-                </div>
-                <div class="weather-item">
-                    <div class="bold-letter" >Min Temp</div>
-                    <div>{{current_data.min_temperature}} C</div>
-                </div>                <div class="weather-item">
-                    <div class="bold-letter" >Max Temp</div>
-                    <div>{{current_data.min_temperature}} C</div>
-                </div>                <div class="weather-item">
-                    <div class="bold-letter" >Details</div>
-                    <div>{{current_data.weather_description}}</div>
-                </div>
-                
-            </div>
+    
         </div>
-        <div class="place-container">
-            <div class="time-zone" id="time-zone"> 
-            <i class='fas fa-map-marker-alt' style='font-size:24px'></i>
-                {{weather_data.city_name}} , {{weather_data.country}}
-            </div>
-        </div>
-
-    </div>
-
-    <div class="future-forecast">
-        <div *ngFor = 'let current_data of weather_data.weather_details' class="weather-forecast" id="weather-forecast">
-            <div class="future-info">
-                <div class="date-container">
-                    <div class="time">
-                        {{current_data.time}}<span id="am-pm">{{current_data.state}}</span>
-                    </div>
-                    <div class="date" id="date">
-                        {{current_data.day}}, {{current_data.date}} {{current_data.month}} {{current_data.year}}
-                    </div>
-                    <img src="{{current_data.weather_icon_url}}" alt="{{current_data.weather_description}}" class="w-icon">
-                    <div class="others weather-forecast-item" id="current-weather-items">
-                            <div class="weather-item">
-                                <div class="bold-letter">Humidity</div>
-                                <div>{{current_data.humidity}} %</div>
-                            </div>
-                            <div class="weather-item">
-                                <div class="bold-letter" >Pressure</div>
-                                <div>{{current_data.pressure}}</div>
-                            </div>
-                            <div class="weather-item">
-                                <div class="bold-letter" >Wind Speed</div>
-                                <div>{{current_data.wind_speed}} km/h</div>
-                            </div>
-                            <div class="weather-item">
-                                <div class="bold-letter" >Min Temp</div>
-                                <div>{{current_data.min_temperature}} C</div>
-                            </div>                <div class="weather-item">
-                                <div class="bold-letter" >Max Temp</div>
-                                <div>{{current_data.min_temperature}} C</div>
-                            </div>                <div class="weather-item">
-                                <div class="bold-letter" >Details</div>
-                                <div>{{current_data.weather_description}}</div>
-                            </div>
+    
+        <div class="future-forecast">
+            <div *ngFor = 'let current_data of weather_data.weather_details' class="weather-forecast">
+                <div class="current-info current-card">
+                    <div class="date-container">
+                        <div class="time">
+                            {{current_data.time}}<span id="am-pm">{{current_data.state}}</span>
+                        </div>
+                        <div class="date" id="date">
+                            {{current_data.day}}, {{current_data.date}} {{current_data.month}} {{current_data.year}}
+                        </div>
+                        <img src="{{current_data.weather_icon_url}}" alt="{{current_data.weather_description}}" class="w-icon">
+                        <div class="others weather-forecast-item" id="current-weather-items">
+                                <div class="weather-item">
+                                    <div class="bold-letter">Humidity</div>
+                                    <div>{{current_data.humidity}} %</div>
+                                </div>
+                                <div class="weather-item">
+                                    <div class="bold-letter" >Pressure</div>
+                                    <div>{{current_data.pressure}}</div>
+                                </div>
+                                <div class="weather-item">
+                                    <div class="bold-letter" >Wind Speed</div>
+                                    <div>{{current_data.wind_speed}} km/h</div>
+                                </div>
+                                <div class="weather-item">
+                                    <div class="bold-letter" >Min Temp</div>
+                                    <div>{{current_data.min_temperature}} C</div>
+                                </div>                <div class="weather-item">
+                                    <div class="bold-letter" >Max Temp</div>
+                                    <div>{{current_data.min_temperature}} C</div>
+                                </div>                <div class="weather-item">
+                                    <div class="bold-letter" >Details</div>
+                                    <div>{{current_data.weather_description}}</div>
+                                </div>
+                        </div>
                     </div>
                 </div>
             </div>
+        
+    
         </div>
     </div>
 </div>
