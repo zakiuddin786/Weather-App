@@ -1,11 +1,12 @@
+<img src="https://images.unsplash.com/photo-1657561321371-2901ba93e9ce?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3570&q=80" id="bg" alt="">
 <div class="container">
     <div class="search-bar">
         <form  [formGroup]="searchForm" (ngSubmit)="onSubmit()">
             <div class="input-group mt-8">
                 <input type="search" class="form-control rounded" formControlName="location"
                 placeholder="Enter the Location" aria-label="Search" aria-describedby="search-addon" />
-                <button type="submit" class="btn btn-outline-primary">Fetch Weather</button>
-             </div>
+                <button type="submit" class="btn btn-primary">Fetch Weather</button>
+                </div>
         </form>
     </div>
     <!-- -->
@@ -80,12 +81,12 @@
     
         <div class="future-forecast">
             <div *ngFor = 'let current_data of weather_data.weather_details' class="weather-forecast">
-                <div class="current-info card">
+                <div class="current-info card nature">
                     <div class="date-container">
-                        <div class="time">
+                        <div class="time white">
                             {{current_data.time}}<span id="am-pm">{{current_data.state}}</span>
                         </div>
-                        <div class="date" id="date">
+                        <div class="date white" id="date">
                             {{current_data.day}}, {{current_data.date}} {{current_data.month}} {{current_data.year}}
                         </div>
                         <img src="{{current_data.weather_icon_url}}" alt="{{current_data.weather_description}}" class="w-icon">
@@ -121,6 +122,8 @@
         </div>
     </div>
 </div>
+
+
 
 
 

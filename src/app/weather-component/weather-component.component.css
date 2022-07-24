@@ -38,24 +38,8 @@ body {
     padding: 2%
 }
 
-.future-info{
-    position: relative;
-	height: 100%;
-	border-radius: 25px;
-	background-image: url("https://images.unsplash.com/photo-1559963110-71b394e7494d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=675&q=80");
-	width: 300px;
-	-webkit-box-shadow: 0 0 20px -10px rgba(0, 0, 0, 0.2);
-	        box-shadow: 0 0 20px -10px rgba(0, 0, 0, 0.2);
-	-webkit-transition: -webkit-transform 300ms ease;
-	transition: -webkit-transform 300ms ease;
-	-o-transition: transform 300ms ease;
-	transition: transform 300ms ease;
-	transition: transform 300ms ease, -webkit-transform 300ms ease;
-	-webkit-transform: translateZ(0) scale(1.02) perspective(1000px);
-	        transform: translateZ(0) scale(1.02) perspective(1000px);
-	float: left;
-    margin-right: 5%;
-    padding: 2%
+.nature{
+	background-image: url("https://images.unsplash.com/photo-1643966392439-bbe3992e5770?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3570&q=80") ;
 }
 
 .date-container{
@@ -85,6 +69,20 @@ body {
     font-size: 30px;
     font-weight: 100;
     color: #fff;
+}
+
+.white{
+  color: #fff !important;
+}
+
+#bg {
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+	
+  /* Preserve aspet ratio */
+  min-width: 100%;
+  min-height: 100%;
 }
 
 .place-container .country{
