@@ -21,7 +21,7 @@
 <div class="container" *ngIf="(weather_data).length!= 0">
     
     <div class="">
-        <div class="current-info current-card">
+        <div class="current-info card">
             <div class="date-container">
                 <div class="time">
                     {{current_data.time}}<span id="am-pm">{{current_data.state}}</span>
@@ -80,7 +80,7 @@
     
         <div class="future-forecast">
             <div *ngFor = 'let current_data of weather_data.weather_details' class="weather-forecast">
-                <div class="current-info current-card">
+                <div class="current-info card">
                     <div class="date-container">
                         <div class="time">
                             {{current_data.time}}<span id="am-pm">{{current_data.state}}</span>
