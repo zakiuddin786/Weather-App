@@ -55,7 +55,7 @@ export class WeatherComponentComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getWeatherData("hyderabad")
+    // this.getWeatherData("hyderabad")
   }
 
 }
