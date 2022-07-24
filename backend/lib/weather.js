@@ -31,14 +31,13 @@ exports.getWeatherForecast = async (req,res)=>{
         weather_object.max_temperature = details.main.temp_max;
         weather_object.humidity = details.main.humidity;
         weather_object.pressure = details.main.pressure;
-        http://openweathermap.org/img/wn/04d@2x.png
         weather_object.weather_icon_url = `http://openweathermap.org/img/wn/${details.weather[0].icon}@2x.png`;
         weather_object.weather_description = details.weather[0].description;
         weather_object.weather_category = details.weather[0].main;
         weather_object.wind_speed = details.wind.speed;
         
         var day = moment.unix(details.dt); 
-        day = day.format('dddd MMMM Do YYYY h:mm a').split(" ");
+        day = day.format('ddd MMMM Do YYYY h:mm a').split(" ");
 
         weather_object.day = day[0];
         weather_object.month = day[1];
@@ -53,6 +52,7 @@ exports.getWeatherForecast = async (req,res)=>{
             weather_details.push(weather_object)
         }
     }
+
 
     let consolidated_data = {};
 
