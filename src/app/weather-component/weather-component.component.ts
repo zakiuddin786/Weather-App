@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { ApiDataService } from '../api-data.service';
 
 @Component({
@@ -8,34 +9,47 @@ import { ApiDataService } from '../api-data.service';
 })
 export class WeatherComponentComponent implements OnInit {
   weather_data: any;
-  constructor(private dataService: ApiDataService) { }
-
-  getWeatherData( ){
-    console.log("calling get weather")
-
-      this.dataService.getData("/getCurrentWeather").subscribe(data =>{
-        console.log(data);
-        this.weather_data = data;
-      })
+  current_data: any;
+  searchForm: FormGroup;
+  constructor(private dataService: ApiDataService) { 
+    this.weather_data = [];
+    this.current_data = {};
+    this.searchForm = new FormGroup({
+      location: new FormControl('')
+    })
   }
 
-  getPosition(): Promise<any>
-  {
-    return new Promise((resolve, reject) => {
+  getWeatherData(location:string){
+    console.log("calling get weather")
+    location = location.trim()
+    if(location==""){
+      alert("Please enter the location!!");
+      return;
+    }
+      this.dataService.getData(`/getCurrentWeather/${location}`).subscribe(data =>{
+        console.log(data);
+        this.weather_data = data;
+        this.current_data = this.weather_data.weather_details[0];
+        this.weather_data.weather_details.shift();
+      },(err) => {
+        console.log(err);
+        if (err.status == 500){
+          alert("Please check the location you've entered!!!");
+        }
+        else{
+          alert("Some Error Occurred, please try again later!");
+        }
+      }
+      )
+  }
 
-      navigator.geolocation.getCurrentPosition(resp => {
-
-          resolve({lng: resp.coords.longitude, lat: resp.coords.latitude});
-        },
-        err => {
-          reject(err);
-        });
-    });
-
+  onSubmit(){
+    console.log(this.searchForm.value.location);
+    this.getWeatherData(this.searchForm.value.location);
   }
 
   ngOnInit(): void {
-    this.getWeatherData()
+    // this.getWeatherData("hyderabad")
   }
 
 }
