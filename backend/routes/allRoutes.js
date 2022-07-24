@@ -10,7 +10,7 @@ const asyncHandler = fn => (req, res, next) => {
         .catch(next);
 };
 
-app.get("/getCurrentWeather",asyncHandler(weatherLib.getWeatherForecast))
+app.get("/getCurrentWeather/:location",asyncHandler(weatherLib.getWeatherForecast))
 
 
 module.exports = app;
