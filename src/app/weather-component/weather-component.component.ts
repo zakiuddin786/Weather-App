@@ -36,7 +36,7 @@ export class WeatherComponentComponent implements OnInit {
         this.isLoading= false;
 
         this.current_data = this.weather_data.weather_details[0];
-        this.weather_data.weather_details.shift();
+        // this.weather_data.weather_details.shift();
       },(err) => {
         console.log(err);
         if (err.status == 500){

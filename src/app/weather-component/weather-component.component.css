@@ -38,6 +38,10 @@ body {
     padding: 2%
 }
 
+.current_bg{
+	background-image: url("https://images.unsplash.com/photo-1553321101-c370a195bd32?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1364&q=80");
+}
+
 .nature{
 	background-image: url("https://images.unsplash.com/photo-1643966392439-bbe3992e5770?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3570&q=80") ;
 }
@@ -48,7 +52,7 @@ body {
 
 .date-container .time{
     font-size: 70px;
-	color: #000;
+	  color: #000;
 }
 
 .date-container #am-pm{
@@ -112,38 +116,14 @@ body {
 
 
 .future-forecast{
-    /* background: rgba(24,24,27,0.8); */
     display: flex;
-    color:white;
     overflow-y: hidden;
     padding: 5%;
 }
 
-.future-forecast .today{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid #eee;
-    border-radius: 10px;
-    padding:15px;
-    padding-right: 40px;
-    border-radius: 10px;
-}
-
-.future-forecast .today .day{
-    padding: 5px 15px;
-    background: #3c3c44;
-    border-radius: 50px;
-    text-align: center;
-}
-
-.future-forecast .today .temp{
-    font-size: 18px;
-    padding-top: 15px;
-}
-
 .future-forecast .weather-forecast{
     display: flex;
+    border-radius: 25%;
 }
 
 .weather-forecast .weather-forecast-item{
